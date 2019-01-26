@@ -23,6 +23,7 @@ public:
 
 	double getFilteredValue(double measurement);
 	void setParameters(double process_noise, double sensor_noise, double estimated_error);
+	void setParameters(double process_noise, double sensor_noise); 
 
 	double getProcessNoise();
 	double getSensorNoise();

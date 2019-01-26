@@ -13,8 +13,14 @@ public:
 
 	Control();
 
-	void inflate();
-	void deflate();
+	double getAttitude(double filteredValue1, double filteredValue2);
+	double getDepth(double filteredValue1, double filteredValue2);
+
+	void inflate(int cellsInflate[]);
+	void deflate(int cellsDeflate[]);
+
+	void controlDepth(double filteredValue1, double filteredValue2, double desiredDepth);
+	void controlAttitude(double filteredValue1, double filteredValue2, double desiredAttitude);
 
 };
 
