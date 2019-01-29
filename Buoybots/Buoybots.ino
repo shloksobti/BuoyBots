@@ -14,6 +14,10 @@ float measuredVoltage;
 Kalman myfilter(0.125,32,1023,0); // double process_noise, double sensor_noise, double estimated_error, double intial_value
 Control myControl();
 
+float voltageToDepth(float voltage){
+  float depth = 42.26*voltage - 69.3 -7.35;
+  return depth;
+}	
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
@@ -33,6 +37,7 @@ void loop() {
    
    measuredVoltage = measuredValue1 * 5/1023;
    filteredVoltage = filteredValue1 * 5/1023;
+   depth = voltageToDepth(filteredVoltage);
 //   
 //   measuredValue2 = (double) analogRead(A2);
 //   filteredValue2 = myfilter.getFilteredValue(measuredValue2);
@@ -40,6 +45,6 @@ void loop() {
 //   depth = myControl.getDepth(filteredValue1, filteredValue2);
 //   attitude = myControl.getAttitude(filteredValue1, filteredValue2);
 //   
-   Serial.println(filteredVoltage,4);
+   Serial.println(depth,6);
 
 }
